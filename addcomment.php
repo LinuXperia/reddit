@@ -12,5 +12,5 @@ if(isset($_POST['addcoment'])){
 	$stmt->execute();
 }
 
-header( "refresh:0;url=home.php" );
+header( "refresh:0;url=komentarji.php?id=$postid" );
 ?>

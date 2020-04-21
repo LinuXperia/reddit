@@ -115,8 +115,11 @@ function userDisliked($post_id)
   }
 }
 
-$sql = "SELECT p.id, p.ime, p.post, s.slika, k.kategorija, u.nickname FROM posts p INNER JOIN slike s ON p.slika_id = s.id INNER JOIN kategorije k ON p.kategorija_id = k.id 
-INNER JOIN users u ON p.user_id = u.id ";
+$sql = "SELECT p.id, p.ime, p.post, s.slika, k.kategorija, u.nickname, r.post_id FROM posts p INNER JOIN slike s ON p.slika_id = s.id INNER JOIN kategorije k ON p.kategorija_id = k.id 
+INNER JOIN users u ON p.user_id = u.id 
+LEFT JOIN rating_info r ON p.id = r.post_id
+GROUP BY p.id
+ORDER BY COUNT(r.id) DESC;";
 $result = mysqli_query($conn, $sql);
 // fetch all posts from database
 // return them as an associative array called $posts

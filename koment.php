@@ -37,7 +37,7 @@
 	  	<a class="user"><?php echo $comment['nickname']?></a><br>
 		  <a class="naslovc"><?php echo $comment['ime']?></a><br>
 		  <a class="commnt"><?php echo $comment['komentar']?></a><br>
-		  <a class="date"><?php echo $comment['datum']?></a><br>
+		  <a class="date"><?php echo date('d-m-Y', strtotime($comment['datum']));?></a><br>
 	  </div>
 	  <?php endforeach ?>
 	  
